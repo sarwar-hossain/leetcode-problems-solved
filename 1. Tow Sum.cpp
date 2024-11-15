@@ -1,4 +1,3 @@
-#include<iostream>
 //1
 
 class Solution {
