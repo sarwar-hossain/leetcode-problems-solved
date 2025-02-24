@@ -1,38 +1,27 @@
-#include<iostream>
-
 class Solution {
 public:
     bool isIsomorphic(string s, string t) {
-        unordered_map<char, char>us;
-         unordered_map<char, char>ut;
-         if(s.size()!=t.size()){
-            return false;
-         }
+           if (s.size() != t.size()) return false;
 
-         for(int i=0;i<s.size();i++){
-            char sc=s[i];
-            char tc=t[i];
+        unordered_map<char, char> sToT;
+        unordered_set<char> mappedChars;
 
-            if(us.count(sc)){
-                if(us[sc]!=tc){
-                    return false;
-                }
+        for (int i = 0; i < s.size(); i++) {
+            char sChar = s[i];
+            char tChar = t[i];
+
+            if (sToT.find(sChar) != sToT.end()) {
+               
+                if (sToT[sChar] != tChar) return false;
+            } else {
+            
+                if (mappedChars.find(tChar) != mappedChars.end()) return false;
+
+                sToT[sChar] = tChar;
+                mappedChars.insert(tChar);
             }
-            else {
-                us[sc]=tc;
-            }
+        }
 
-              if(ut.count(tc)){
-                if(ut[tc]!=sc){
-                    return false;
-                }
-            }
-            else {
-                ut[tc]=sc;
-            }
-
-         }
-
-         return true;
+        return true;
     }
 };

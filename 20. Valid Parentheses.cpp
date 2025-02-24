@@ -1,5 +1,4 @@
-#include<iostream>
-//2
+
 
 class Solution {
 public:
@@ -8,7 +7,7 @@ public:
         for (char c : s) { 
             if (c == '(' || c == '{' || c == '[') { 
                 st.push(c); 
-            } else { 
+            } else if(s[i]==')' || s[i]=='}' || s[i]==']') { 
                 if (st.empty() || 
                     (c == ')' && st.top() != '(') || 
                     (c == '}' && st.top() != '{') ||
