@@ -1,7 +1,3 @@
-#include<iostream>
-//1
-
-
 class Solution {
 public:
     int findContentChildren(vector<int>& g, vector<int>& s) {

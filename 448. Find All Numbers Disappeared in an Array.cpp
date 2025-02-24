@@ -1,22 +1,16 @@
-//1
-
 class Solution {
 public:
     vector<int> findDisappearedNumbers(vector<int>& nums) {
-        int n=nums.size();
-        vector<int>result;
+        unordered_set<int> hashSet(nums.begin(), nums.end()); 
+        vector<int> missingNumbers;
 
-        for(int i=0;i<n;i++){
-            int index= abs(nums[i])-1;
-            nums[index]=-abs(nums[index]);
-        }
-
-        for(int i=0;i<n;i++){
-            if(nums[i]>0){
-                result.push_back(i+1);
+       
+        for (int i = 1; i <= nums.size(); ++i) {
+            if (hashSet.find(i) == hashSet.end()) {
+                missingNumbers.push_back(i);
             }
         }
 
-        return result;
+        return missingNumbers;
     }
 };
